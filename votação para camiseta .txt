@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votação Terceirão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .option {
+            border: 2px solid #000;
+            padding: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vote na Camiseta do Terceirão</h1>
+    <div class="container">
+        <div class="option"><img src="file-EPre8eUz7NRw1gahs6nHFV" alt="Opção 1"><button onclick="vote(1)">Votar</button></div>
+        <div class="option"><img src="file-M6AihR8pDvGouqPNHfDrdZ" alt="Opção 2"><button onclick="vote(2)">Votar</button></div>
+        <div class="option"><img src="file-Y4uDuw5HbRRXT1pUbGMZ7H" alt="Opção 3"><button onclick="vote(3)">Votar</button></div>
+        <div class="option"><img src="file-Rn3DECEGoqrwYb1rTjRDy9" alt="Opção 4"><button onclick="vote(4)">Votar</button></div>
+        <div class="option"><img src="file-N3aYbBzQN2YUfvvzGCz1Zm" alt="Opção 5"><button onclick="vote(5)">Votar</button></div>
+        <div class="option"><img src="file-Pg1ZiJGViQmbz39V837aSn" alt="Opção 6"><button onclick="vote(6)">Votar</button></div>
+        <div class="option"><img src="file-1uJbTHy2dXSZfFkQmJo34W" alt="Opção 7"><button onclick="vote(7)">Votar</button></div>
+        <div class="option"><img src="file-2BEbxtB74jJDdTniqiNykv" alt="Opção 8"><button onclick="vote(8)">Votar</button></div>
+        <div class="option"><img src="file-1Mmgcf4gNp7e3BQeKH5TfN" alt="Opção 9"><button onclick="vote(9)">Votar</button></div>
+        <div class="option"><img src="file-An6CYSVmRPVXWaAHPPHGUB" alt="Opção 10"><button onclick="vote(10)">Votar</button></div>
+        <div class="option"><img src="file-Ltx5otW89zETs6in7mCUx1" alt="Opção 11"><button onclick="vote(11)">Votar</button></div>
+        <div class="option"><img src="file-K5b7XJkHtaBpJ4q9wvFZ5Y" alt="Opção 12"><button onclick="vote(12)">Votar</button></div>
+    </div>
+
+    <button onclick="showResults()">Ver Resultados</button>
+    <div id="results"></div>
+
+    <script>
+        function vote(option) {
+            let votes = JSON.parse(localStorage.getItem('votes')) || {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0};
+            votes[option]++;
+            localStorage.setItem('votes', JSON.stringify(votes));
+            alert("Voto registrado!");
+        }
+
+        function showResults() {
+            let votes = JSON.parse(localStorage.getItem('votes')) || {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0};
+            document.getElementById("results").innerHTML = 
+                `<p>Opção 1: ${votes[1]} votos</p>
+                 <p>Opção 2: ${votes[2]} votos</p>
+                 <p>Opção 3: ${votes[3]} votos</p>
+                 <p>Opção 4: ${votes[4]} votos</p>
+                 <p>Opção 5: ${votes[5]} votos</p>
+                 <p>Opção 6: ${votes[6]} votos</p>
+                 <p>Opção 7: ${votes[7]} votos</p>
+                 <p>Opção 8: ${votes[8]} votos</p>
+                 <p>Opção 9: ${votes[9]} votos</p>
+                 <p>Opção 10: ${votes[10]} votos</p>
+                 <p>Opção 11: ${votes[11]} votos</p>
+                 <p>Opção 12: ${votes[12]} votos</p>`;
+        }
+    </script>
+
+</body>
+</html>
